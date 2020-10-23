@@ -1,0 +1,50 @@
+
+
+sh-4.2$ pwd
+/opt/mycom/data/flatfiles/shard-core-mum/V2/nksn_tas_xmlomes_n19cloud/TAS-NKSN-Hour/standard
+
+sh-4.2$ ls -lrth|tail
+
+-rw-r--r--. 1 mycom mycom 401K Sep  1 06:11 20200831
+-rw-r--r--. 1 mycom mycom 416K Sep  1 18:24 20200823
+-rw-r--r--. 1 mycom mycom 430K Sep  1 19:29 20200824
+-rw-r--r--. 1 mycom mycom 416K Sep  2 06:11 20200901
+-rw-r--r--. 1 mycom mycom 803K Sep  2 10:12 20200902
+
+
+Flat file looks fine
+
+sh-4.2$ ./FlatFileInfo.sh /opt/mycom/data/flatfiles/shard-core-mum/V2/nksn_tas_xmlomes_n19cloud/TAS-NKSN-Hour/standard/20200824
+Overloading ./FlatFileInfo.sh /opt/mycom/data/flatfiles/shard-core-mum/V2/nksn_tas_xmlomes_n19cloud/TAS-NKSN-Hour/standard/20200824 to use Java12 and ZGC
+javaBin=/opt/mycom/3rd_party/jdk_installed/jdk-14.0.2/bin
+javacBin=/opt/mycom/3rd_party/jdk_installed/jdk-14.0.2/bin
+Note: /tmp/FlatFileInfo.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+2020/09/02 10:42:29 main [INFO]
+**************************************************************************************
+* FlatFileInfo v1.14 launched on Wed Sep 02 10:42:29 IST 2020 on eaa-proptima-load-pm-shard-core-mum-75-2095m
+* @author: Majid Ziane
+* http://www.mycom-int.fr/private/RnD/L3_Support/Delivered_scripts/FlatFileInfo.sh
+**************************************************************************************
+2020/09/02 10:42:29 main [INFO] log file;/opt/mycom/logs/FlatFileInfo.20200902104229.log
+2020/09/02 10:42:29 main [INFO] Flatfile to read
+2020/09/02 10:42:29 main [INFO] /opt/mycom/data/flatfiles/shard-core-mum/V2/nksn_tas_xmlomes_n19cloud/TAS-NKSN-Hour/standard/20200824
+log4j:WARN No appenders could be found for logger (dil.flatfile2.FlatFileEventWatcher).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+TAS-NKSN-Hour => 20200824
+ =====> TAS-NKSN-Hour
+ =====> 20200824
+2020/09/02 10:42:30 main [INFO] [/opt/mycom/data/flatfiles/shard-core-mum/V2/nksn_tas_xmlomes_n19cloud/TAS-NKSN-Hour/standard/20200824] <NE type>;NKSN-TAS;gran;60;file size (bytes);439892;compression;NONE;last modified time;202009011929;start;202008240530;end;202008250530;period count;24;NE count;24;spare count;5;20%;counter count;153;[block size;4;block count per cluster;29;cluster count per super cluster;153;super cluster count;24];size per counter;2875;size per NE;15168
+2020/09/02 10:42:30 main Exported id file:path;/tmp/FlatFileInfo/nksn_tas_xmlomes_n19cloud/TAS-NKSN-Hour/202009021042/20200824_NE.txt
+[INFO] test DB connection ...successul
+2020/09/02 10:42:31 main Exported id file:path;/tmp/FlatFileInfo/nksn_tas_xmlomes_n19cloud/TAS-NKSN-Hour/202009021042/20200824_Counter.txt
+2020/09/02 10:42:31 main [INFO] finished (2040 ms)
+sh-4.2$
+
+****************************************************************************************************************************************************************
+
+We have delete FF directly means direct rm from location  '/opt/mycom/data/flatfiles/shard-core-mum/V2/nksn_tas_xmlomes_n19cloud/TAS-NKSN-Hour/standard'
+
+After deleting FF, re-trigger aggregation and FF has been updated for 24th and size is also looks fine but no data has been reflected into the client.
+
